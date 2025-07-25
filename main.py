@@ -5,10 +5,8 @@ from random import randint
 s = curses.initscr()
 curses.curs_set(0)
 sh, sw = s.getmaxyx()
-
-# Clamp size to avoid edge writing
-sh = min(sh, 20)
-sw = min(sw, 60)
+sh = max(min(sh, 20), 10)  # max 20, min 10
+sw = max(min(sw, 60), 20)  # max 60, min 20
 
 w = curses.newwin(sh, sw, 0, 0)
 w.keypad(1)
